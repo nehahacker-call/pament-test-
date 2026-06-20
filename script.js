@@ -1,44 +1,71 @@
-function payment(){
-
-let name = document.getElementById("name").value;
-let mobile = document.getElementById("mobile").value;
-
 let pan = document.getElementById("pan");
-let price = pan.value;
-let panName = pan.options[pan.selectedIndex].text;
-
-let qty = document.getElementById("qty").value;
-let date = document.getElementById("date").value;
+let qty = document.getElementById("qty");
 
 
-if(name=="" || mobile=="" || date==""){
-    alert("Please fill all details");
-    return;
+function calculate(){
+
+let price = Number(pan.value);
+
+let quantity = Number(qty.value);
+
+
+let total = price * quantity;
+
+
+document.getElementById("amount").innerHTML =
+"Total Amount: ₹"+total;
+
 }
 
 
-let amount = price * qty;
+pan.onchange = calculate;
+
+qty.oninput = calculate;
 
 
-// তোমাৰ UPI ID ইয়াত দিবা
-let upiID = "zxfamily81@oksbi";
 
-// তোমাৰ নাম
-let yourName = "zx";
+function makePayment(){
 
 
-let upiLink =
-"upi://pay?pa="+upiID+
-"&pn="+yourName+
-"&am="+amount+
-"&cu=INR";
+let name =
+document.getElementById("name").value;
 
 
-// UPI app open
-window.location.href = upiLink;
+let mobile =
+document.getElementById("mobile").value;
 
 
-document.getElementById("result").innerHTML =
-"Booking Amount: ₹"+amount;
+let date =
+document.getElementById("date").value;
+
+
+let amount =
+Number(pan.value) * Number(qty.value);
+
+
+
+if(name=="" || mobile=="" || date==""){
+
+alert("Please fill all details");
+
+return;
+
+}
+
+
+
+let bookingID =
+Math.floor(Math.random()*100000);
+
+
+
+document.getElementById("result").innerHTML=
+
+"✅ Booking Created <br><br>"+
+"Booking ID: "+bookingID+
+"<br>Name: "+name+
+"<br>Amount: ₹"+amount+
+"<br><br>Scan QR and Pay";
+
 
 }
