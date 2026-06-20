@@ -4,82 +4,57 @@ let qty = document.getElementById("qty");
 
 function calculateAmount(){
 
-let price = Number(pan.value);
+    let price = Number(pan.value);
+    let quantity = Number(qty.value);
 
-let quantity = Number(qty.value);
+    let total = price * quantity;
 
-
-let total = price * quantity;
-
-
-document.getElementById("amount").innerHTML =
-"Total Amount: ₹"+total;
+    document.getElementById("amount").innerHTML =
+    "Total Amount: ₹" + total;
 
 }
 
 
-
 pan.onchange = calculateAmount;
-
 qty.oninput = calculateAmount;
-
 
 
 
 function makePayment(){
 
 
-let name =
-document.getElementById("name").value;
+let name = document.getElementById("name").value;
+let mobile = document.getElementById("mobile").value;
+let date = document.getElementById("date").value;
 
 
-let mobile =
-document.getElementById("mobile").value;
+let price = Number(pan.value);
+let quantity = Number(qty.value);
 
-
-let date =
-document.getElementById("date").value;
-
-
-
-let price =
-Number(pan.value);
-
-
-let quantity =
-Number(qty.value);
-
-
-let amount =
-price * quantity;
+let amount = price * quantity;
 
 
 
 if(name=="" || mobile=="" || date==""){
 
 alert("Please fill all details");
-
 return;
 
 }
 
 
 
-// =====================
-// ADD YOUR UPI DETAILS
-// =====================
+// তোমাৰ UPI details
 
+let upiID = "YOUR_UPI_ID";
 
-let upiID = "rahulbidwas725@okicici";
-
-let payeeName = "biku ";
+let payeeName = "YOUR_NAME";
 
 
 
-// UPI LINK
+// UPI Link
 
 let upiLink =
-
 "upi://pay?pa="+upiID+
 "&pn="+payeeName+
 "&am="+amount+
@@ -87,15 +62,82 @@ let upiLink =
 
 
 
-// Mobile Google Pay / UPI Open
 
-window.location.href = upiLink;
+// Check Mobile or Laptop
+
+let isMobile =
+/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 
 
-document.getElementById("result").innerHTML =
+if(isMobile){
 
-"Booking Amount ₹"+amount;
+
+    // Mobile হলে UPI open try কৰিব
+
+    window.location.href = upiLink;
+
+
+    // যদি UPI app নাথাকে তেন্তে fallback screen
+
+    setTimeout(function(){
+
+        showPaymentScreen(amount);
+
+    },2000);
+
+
+}
+else{
+
+
+    // Laptop হলে payment screen
+
+    showPaymentScreen(amount);
+
+
+}
+
+
+
+}
+
+
+
+
+function showPaymentScreen(amount){
+
+
+document.body.innerHTML = `
+
+<div class="box">
+
+<h2>💳 Payment</h2>
+
+
+<h3>Pay Amount: ₹${amount}</h3>
+
+
+<h3>Scan QR Code</h3>
+
+
+<img src="upi-qr.png" width="220">
+
+
+<p>
+UPI ID:
+YOUR_UPI_ID
+</p>
+
+
+<button onclick="location.reload()">
+Back
+</button>
+
+
+</div>
+
+`;
 
 
 }
