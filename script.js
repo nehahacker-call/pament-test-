@@ -1,41 +1,101 @@
-function makePayment(){
-
-let name = document.getElementById("name").value;
-let mobile = document.getElementById("mobile").value;
-let date = document.getElementById("date").value;
-
-let price = Number(document.getElementById("pan").value);
-let qty = Number(document.getElementById("qty").value);
-
-let amount = price * qty;
+let pan = document.getElementById("pan");
+let qty = document.getElementById("qty");
 
 
-if(name=="" || mobile=="" || date==""){
-    alert("Please fill all details");
-    return;
+function calculateAmount(){
+
+let price = Number(pan.value);
+
+let quantity = Number(qty.value);
+
+
+let total = price * quantity;
+
+
+document.getElementById("amount").innerHTML =
+"Total Amount: ₹"+total;
+
 }
 
 
-// তোমাৰ UPI ID
-let upiID = "zxfamily81@oksbi;
 
-// তোমাৰ নাম
-let payeeName = "aszx";
+pan.onchange = calculateAmount;
+
+qty.oninput = calculateAmount;
 
 
-// UPI payment link
-let upiURL =
+
+
+function makePayment(){
+
+
+let name =
+document.getElementById("name").value;
+
+
+let mobile =
+document.getElementById("mobile").value;
+
+
+let date =
+document.getElementById("date").value;
+
+
+
+let price =
+Number(pan.value);
+
+
+let quantity =
+Number(qty.value);
+
+
+let amount =
+price * quantity;
+
+
+
+if(name=="" || mobile=="" || date==""){
+
+alert("Please fill all details");
+
+return;
+
+}
+
+
+
+// =====================
+// ADD YOUR UPI DETAILS
+// =====================
+
+
+let upiID = "YOUR_UPI_ID";
+
+let payeeName = "YOUR_NAME";
+
+
+
+// UPI LINK
+
+let upiLink =
+
 "upi://pay?pa="+upiID+
 "&pn="+payeeName+
 "&am="+amount+
 "&cu=INR";
 
 
-// Mobile ত UPI app open
-window.location.href = upiURL;
+
+// Mobile Google Pay / UPI Open
+
+window.location.href = upiLink;
+
 
 
 document.getElementById("result").innerHTML =
+
 "Booking Amount ₹"+amount;
+
 
 }
