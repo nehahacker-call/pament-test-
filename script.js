@@ -21,10 +21,10 @@ let amount = price * qty;
 
 
 // তোমাৰ UPI ID ইয়াত দিবা
-let upiID = "YOUR_UPI_ID";
+let upiID = "zxfamily81@oksbi";
 
 // তোমাৰ নাম
-let yourName = "YOUR_NAME";
+let yourName = "zx";
 
 
 let upiLink =
