@@ -70,9 +70,9 @@ return;
 // =====================
 
 
-let upiID = "YOUR_UPI_ID";
+let upiID = "rahulbidwas725@okicici";
 
-let payeeName = "YOUR_NAME";
+let payeeName = "biku ";
 
 
 
