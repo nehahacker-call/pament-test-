@@ -1,118 +1,105 @@
-let pan = document.getElementById("pan");
-let qty = document.getElementById("qty");
-
-
-function calculate(){
-
-let price = Number(pan.value);
-
-let quantity = Number(qty.value);
-
-let total = price * quantity;
-
-
-document.getElementById("amount").innerHTML =
-"Total Amount: ₹"+total;
-
-}
-
-
-pan.onchange = calculate;
-
-qty.oninput = calculate;
-
-
-
 function makePayment(){
 
+let name = document.getElementById("name").value;
 
-let name =
-document.getElementById("name").value;
+let mobile = document.getElementById("mobile").value;
 
 
-let mobile =
-document.getElementById("mobile").value;
+let price = Number(document.getElementById("pan").value);
+
+let qty = Number(document.getElementById("qty").value);
+
+
+let amount = price * qty;
 
 
 // Name capital
+
 name = name.toUpperCase();
-
-
-// Auto date
-let date = new Date().toLocaleDateString();
-
-
-
-let amount =
-Number(pan.value) * Number(qty.value);
 
 
 
 if(name==""){
-
-alert("Please enter name");
-
-return;
-
+    alert("Enter name");
+    return;
 }
 
 
-// Mobile 10 digit check
+// Mobile check
 
 if(!/^[0-9]{10}$/.test(mobile)){
-
-alert("Mobile number must be 10 digit");
-
-return;
-
+    alert("Mobile number must be 10 digit");
+    return;
 }
 
 
-
-let bookingID =
-Math.floor(Math.random()*100000);
-
-
-
-// Booking show
-
-document.getElementById("result").innerHTML=
-
-"✅ Booking Created <br><br>"+
-
-"Booking ID: "+bookingID+
-
-"<br>Name: "+name+
-
-"<br>Mobile: "+mobile+
-
-"<br>Date: "+date+
-
-"<br>Amount: ₹"+amount+
-
-"<br><br>Proceeding Payment...";
-
-
-
-// UPI Payment
+// তোমাৰ UPI details
 
 let upiID = "rahulbidwas725@okicici";
 
-let payeeName = "Puja Das ";
+let shopName = "PAN SHOP";
 
+
+
+// UPI link
 
 let upiLink =
-
 "upi://pay?pa="+upiID+
-"&pn="+payeeName+
+"&pn="+shopName+
 "&am="+amount+
 "&cu=INR";
 
 
 
-// Mobile UPI open
+// Device check
 
-window.location.href = upiLink;
+let mobileDevice =
+/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+
+
+if(mobileDevice){
+
+    // Mobile হলে GPay/UPI open
+
+    window.location.href = upiLink;
+
+
+}
+
+else{
+
+
+    // Laptop হলে payment screen show
+
+    document.body.innerHTML = `
+
+    <div style="
+    text-align:center;
+    margin-top:50px;
+    font-family:Arial;
+    ">
+
+    <h2>💳 Payment</h2>
+
+    <h3>Pay Amount: ₹${amount}</h3>
+
+
+    <h3>Scan QR Code</h3>
+
+
+    <img src="upi-qr.png" width="250">
+
+
+    <p>UPI ID: ${upiID}</p>
+
+
+    </div>
+
+    `;
+
+
+}
 
 
 }
