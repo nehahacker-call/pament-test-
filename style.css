@@ -1,86 +1,169 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
 body{
 
-font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
 
-background:#f2f2f2;
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    linear-gradient(135deg,#0f9b0f,#00c9ff);
+
+    padding:15px;
 
 }
 
 
+
+/* Main Card */
 
 .box{
 
-width:350px;
+    width:100%;
 
-background:white;
+    max-width:400px;
 
-margin:50px auto;
+    background:rgba(255,255,255,0.95);
 
-padding:25px;
+    padding:25px;
 
-border-radius:10px;
+    border-radius:20px;
 
-box-shadow:0 0 10px gray;
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.3);
 
 }
 
 
+
+/* Heading */
 
 h2{
 
-text-align:center;
+    text-align:center;
 
-color:green;
+    color:#008000;
+
+    font-size:28px;
+
+    margin-bottom:20px;
 
 }
 
 
+
+/* Label */
 
 label{
 
-font-weight:bold;
+    display:block;
 
-display:block;
+    font-weight:bold;
 
-margin-top:10px;
+    color:#333;
+
+    margin-top:15px;
 
 }
 
 
+
+/* Input */
 
 input,select{
 
-width:100%;
+    width:100%;
 
-padding:10px;
+    padding:14px;
 
-margin-top:5px;
+    margin-top:7px;
 
-box-sizing:border-box;
+    border:2px solid #ddd;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    outline:none;
+
+    background:#fff;
 
 }
 
 
 
+input:focus,
+select:focus{
+
+    border-color:#00a000;
+
+}
+
+
+
+/* Amount */
+
+#amount{
+
+    text-align:center;
+
+    color:#008000;
+
+    margin-top:20px;
+
+    font-size:22px;
+
+}
+
+
+
+/* Button */
+
 button{
 
-width:100%;
+    width:100%;
 
-padding:12px;
+    padding:15px;
 
-margin-top:20px;
+    margin-top:25px;
 
-background:green;
+    background:
 
-color:white;
+    linear-gradient(45deg,#008000,#00c853);
 
-border:none;
+    color:white;
 
-border-radius:5px;
+    border:none;
 
-font-size:16px;
+    border-radius:30px;
 
-cursor:pointer;
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 5px 15px rgba(0,150,0,0.3);
+
+}
+
+
+
+button:active{
+
+    transform:scale(0.97);
 
 }
 
@@ -88,20 +171,76 @@ cursor:pointer;
 
 button:hover{
 
-background:darkgreen;
+    opacity:0.9;
 
 }
 
 
 
+/* Result */
+
 #result{
 
-color:green;
+    margin-top:20px;
 
-text-align:center;
+    padding:15px;
 
-font-weight:bold;
+    background:#e8ffe8;
 
-margin-top:20px;
+    border-radius:12px;
+
+    color:green;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
+
+
+
+/* Mobile Design */
+
+@media(max-width:480px){
+
+
+.box{
+
+    width:100%;
+
+    min-height:90vh;
+
+    border-radius:0;
+
+    padding:25px 20px;
+
+}
+
+
+
+h2{
+
+    font-size:26px;
+
+}
+
+
+input,select{
+
+    padding:15px;
+
+    font-size:17px;
+
+}
+
+
+button{
+
+    padding:16px;
+
+    font-size:18px;
+
+}
+
 
 }
