@@ -8,7 +8,6 @@ let price = Number(pan.value);
 
 let quantity = Number(qty.value);
 
-
 let total = price * quantity;
 
 
@@ -35,7 +34,7 @@ let mobile =
 document.getElementById("mobile").value;
 
 
-// Name capital letter
+// Name capital
 name = name.toUpperCase();
 
 
@@ -49,7 +48,6 @@ Number(pan.value) * Number(qty.value);
 
 
 
-// Check name
 if(name==""){
 
 alert("Please enter name");
@@ -59,8 +57,7 @@ return;
 }
 
 
-
-// Check mobile number 10 digit
+// Mobile 10 digit check
 
 if(!/^[0-9]{10}$/.test(mobile)){
 
@@ -77,6 +74,8 @@ Math.floor(Math.random()*100000);
 
 
 
+// Booking show
+
 document.getElementById("result").innerHTML=
 
 "✅ Booking Created <br><br>"+
@@ -91,7 +90,29 @@ document.getElementById("result").innerHTML=
 
 "<br>Amount: ₹"+amount+
 
-"<br><br>Scan QR and Pay";
+"<br><br>Proceeding Payment...";
+
+
+
+// UPI Payment
+
+let upiID = "YOUR_UPI_ID";
+
+let payeeName = "YOUR_NAME";
+
+
+let upiLink =
+
+"upi://pay?pa="+upiID+
+"&pn="+payeeName+
+"&am="+amount+
+"&cu=INR";
+
+
+
+// Mobile UPI open
+
+window.location.href = upiLink;
 
 
 }
