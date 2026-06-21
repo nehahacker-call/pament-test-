@@ -96,9 +96,9 @@ document.getElementById("result").innerHTML=
 
 // UPI Payment
 
-let upiID = "YOUR_UPI_ID";
+let upiID = "rahulbidwas725@okicici";
 
-let payeeName = "YOUR_NAME";
+let payeeName = "Puja Das ";
 
 
 let upiLink =
