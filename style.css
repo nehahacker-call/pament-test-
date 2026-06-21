@@ -7,41 +7,29 @@
 
 body{
 
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 
     min-height:100vh;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
+    width:100%;
 
     background:
-    linear-gradient(135deg,#0f9b0f,#00c9ff);
-
-    padding:15px;
+    linear-gradient(135deg,#00b09b,#96c93d);
 
 }
 
 
-
-/* Main Card */
+/* Full Screen Box */
 
 .box{
 
     width:100%;
 
-    max-width:400px;
+    min-height:100vh;
 
-    background:rgba(255,255,255,0.95);
+    background:white;
 
-    padding:25px;
-
-    border-radius:20px;
-
-    box-shadow:
-    0 15px 35px rgba(0,0,0,0.3);
+    padding:25px 20px;
 
 }
 
@@ -55,9 +43,9 @@ h2{
 
     color:#008000;
 
-    font-size:28px;
+    font-size:30px;
 
-    margin-bottom:20px;
+    margin:20px 0 30px;
 
 }
 
@@ -69,11 +57,13 @@ label{
 
     display:block;
 
+    font-size:18px;
+
     font-weight:bold;
 
-    color:#333;
+    margin-top:18px;
 
-    margin-top:15px;
+    color:#333;
 
 }
 
@@ -85,28 +75,17 @@ input,select{
 
     width:100%;
 
-    padding:14px;
+    height:55px;
 
-    margin-top:7px;
+    padding:15px;
+
+    margin-top:8px;
 
     border:2px solid #ddd;
 
     border-radius:12px;
 
-    font-size:16px;
-
-    outline:none;
-
-    background:#fff;
-
-}
-
-
-
-input:focus,
-select:focus{
-
-    border-color:#00a000;
+    font-size:17px;
 
 }
 
@@ -118,11 +97,11 @@ select:focus{
 
     text-align:center;
 
-    color:#008000;
+    margin-top:25px;
 
-    margin-top:20px;
+    color:green;
 
-    font-size:22px;
+    font-size:24px;
 
 }
 
@@ -134,13 +113,11 @@ button{
 
     width:100%;
 
-    padding:15px;
+    height:60px;
 
-    margin-top:25px;
+    margin-top:30px;
 
-    background:
-
-    linear-gradient(45deg,#008000,#00c853);
+    background:#008000;
 
     color:white;
 
@@ -148,30 +125,9 @@ button{
 
     border-radius:30px;
 
-    font-size:18px;
+    font-size:20px;
 
     font-weight:bold;
-
-    cursor:pointer;
-
-    box-shadow:
-    0 5px 15px rgba(0,150,0,0.3);
-
-}
-
-
-
-button:active{
-
-    transform:scale(0.97);
-
-}
-
-
-
-button:hover{
-
-    opacity:0.9;
 
 }
 
@@ -181,66 +137,40 @@ button:hover{
 
 #result{
 
-    margin-top:20px;
+    margin-top:25px;
 
     padding:15px;
 
-    background:#e8ffe8;
+    background:#eaffea;
 
-    border-radius:12px;
-
-    color:green;
+    border-radius:10px;
 
     text-align:center;
 
-    font-weight:bold;
-
-}
-
-
-
-/* Mobile Design */
-
-@media(max-width:480px){
-
-
-.box{
-
-    width:100%;
-
-    min-height:90vh;
-
-    border-radius:0;
-
-    padding:25px 20px;
-
-}
-
-
-
-h2{
-
-    font-size:26px;
-
-}
-
-
-input,select{
-
-    padding:15px;
+    color:green;
 
     font-size:17px;
 
 }
 
 
-button{
 
-    padding:16px;
+/* Laptop view */
 
-    font-size:18px;
+@media(min-width:600px){
+
+.box{
+
+    width:400px;
+
+    min-height:auto;
+
+    margin:50px auto;
+
+    border-radius:20px;
+
+    box-shadow:0 0 20px gray;
 
 }
-
 
 }
