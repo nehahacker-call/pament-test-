@@ -1,61 +1,41 @@
 function makePayment(){
 
+let name = document.getElementById("name").value.toUpperCase();
 
-let name=document.getElementById("name").value.toUpperCase();
+let mobile = document.getElementById("mobile").value;
 
-let mobile=document.getElementById("mobile").value;
+let pan = document.getElementById("pan");
 
+let price = Number(pan.value);
 
-let pan=document.getElementById("pan");
+let qty = Number(document.getElementById("qty").value);
 
-let price=Number(pan.value);
-
-
-let qty=Number(document.getElementById("qty").value);
-
-
-let amount=price*qty;
-
-
-let date=new Date().toLocaleDateString();
-
+let amount = price * qty;
 
 
 if(name==""){
-
-alert("Enter Name");
-
-return;
-
+    alert("Enter Name");
+    return;
 }
-
 
 
 if(!/^[0-9]{10}$/.test(mobile)){
-
-alert("Mobile number must be 10 digit");
-
-return;
-
+    alert("Mobile number must be 10 digit");
+    return;
 }
 
 
-
-let bookingID=Math.floor(Math.random()*100000);
-
+let bookingID = Math.floor(Math.random()*100000);
 
 
 
+let upiID = "rahulbidwas725@okicici";
 
-// UPI
-
-let upiID="rahulbidwas725@okicici";
-
-let shopName="PAN SHOP";
+let shopName = "PAN SHOP";
 
 
 
-let upiLink=
+let upiLink =
 "upi://pay?pa="+upiID+
 "&pn="+shopName+
 "&am="+amount+
@@ -63,16 +43,14 @@ let upiLink=
 
 
 
-
-
-let isMobile=/Android|iPhone|iPad/i.test(navigator.userAgent);
+let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 
 
 if(isMobile){
 
 
-window.location.href=upiLink;
+window.location.href = upiLink;
 
 
 
@@ -80,13 +58,11 @@ setTimeout(function(){
 
 showPaymentScreen(amount,upiID,bookingID);
 
-
 },3000);
 
 
 
 }
-
 else{
 
 
@@ -96,9 +72,7 @@ showPaymentScreen(amount,upiID,bookingID);
 }
 
 
-
 }
-
 
 
 
@@ -106,15 +80,16 @@ showPaymentScreen(amount,upiID,bookingID);
 function showPaymentScreen(amount,upiID,bookingID){
 
 
-document.body.innerHTML=`
+document.body.innerHTML = `
 
 <div class="box">
+
 
 <h2>💳 Payment</h2>
 
 
 <h3>
-Amount: ₹${amount}
+Amount : ₹${amount}
 </h3>
 
 
@@ -122,17 +97,23 @@ Amount: ₹${amount}
 
 
 <p>
-UPI ID: ${upiID}
+UPI ID : ${upiID}
 </p>
 
 
 <p>
-Booking ID: ${bookingID}
+Booking ID : ${bookingID}
+</p>
+
+
+<p>
+Scan QR Code and Pay
 </p>
 
 
 </div>
 
 `;
+
 
 }
