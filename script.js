@@ -105,24 +105,35 @@ let upiLink =
 
 
 
+
 // Device check
 
-let isMobile = /Android|iPhone/i.test(navigator.userAgent);
+let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 
 
 if(isMobile){
 
 
-window.location.assign(upiLink);
+    // UPI app open try
+
+    window.location.assign(upiLink);
 
 
 
-setTimeout(function(){
+    // 3 second পিছত Payment Screen show
 
-alert("UPI app not found. Please install Google Pay/PhonePe.");
+    setTimeout(function(){
 
-},3000);
+
+        showPaymentScreen(
+            amount,
+            upiID,
+            bookingID
+        );
+
+
+    },3000);
 
 
 
@@ -131,30 +142,65 @@ alert("UPI app not found. Please install Google Pay/PhonePe.");
 else{
 
 
+    // Laptop হলে direct Payment Screen
+
+    showPaymentScreen(
+        amount,
+        upiID,
+        bookingID
+    );
+
+
+}
+
+
+
+
+
+// Payment Screen Function
+
+function showPaymentScreen(amount,upiID,bookingID){
+
+
 document.body.innerHTML = `
 
-<div style="text-align:center;margin-top:50px">
+
+<div style="
+text-align:center;
+margin-top:50px;
+font-family:Arial;
+">
+
 
 <h2>💳 Payment</h2>
 
-<h3>Amount: ₹${amount}</h3>
+
+<h3>
+Pay Amount: ₹${amount}
+</h3>
 
 
 <img src="upi-qr.png" width="250">
 
 
-<p>UPI ID: ${upiID}</p>
+<p>
+UPI ID: ${upiID}
+</p>
 
 
-<p>Booking ID: ${bookingID}</p>
+<p>
+Booking ID: ${bookingID}
+</p>
+
+
+<p>
+Scan QR Code and Pay</p>
 
 
 </div>
 
+
 `;
-
-
-}
 
 
 }
