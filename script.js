@@ -69,7 +69,7 @@ let bookingID = Math.floor(Math.random()*100000);
 // =======================
 
 
-let scriptURL = "https://script.google.com/macros/s/AKfycbzWNs-aJfh51_9hl3wa8Ckyw0-Ro1NHY6YH45Egik_Yp2_s_7uYEcnfPIJuxykH_9XbHQ/exec";
+let scriptURL = "https://script.google.com/macros/s/AKfycbxnuFBkySmqIN03tK19r7-lGlf-FnVbh-x2CChDBtiDeabknJ0no6bnrblT0g7Yfx-I/exec";
 
 
 
